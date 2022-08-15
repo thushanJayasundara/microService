@@ -1,0 +1,29 @@
+server:
+  port: 8082
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:3308/flight_amenity
+    username: postgres
+    password: 1234
+
+  jpa:
+    database: POSTGRESQL
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+flight-amenity:
+  amenity-url: http://localhost:3000/amenities
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,38 @@
+{
+  "amenities": [
+    {
+      "Business": {
+        "Seat": "These wide seats all come with a door and boast direct aisle access, alternating between forward- and rear-facing rows to provide the highest level of privacy and comfort available in Business Class",
+        "Meal1": "Diabetic Meal(DBML) / Low Fat Meal(LFML) / Low Calorie Meal(LCML)",
+        "Meal2": "Cuttlefish & White Konjacw/Lemongrass flavored Cauliflower Purée",
+        "Meal3": "Steamed Chicken & Mushroom Puréew/Vegetable & Quinoa Salad Style",
+        "Meal4": "Dessert - Tea Jelly",
+        "WiFi": "Free - unlimited",
+        "Entertainment": "Business class lounges offer their guests a variety of entertainment options. One of them are provided by the TV monitors of the airplane seats of business class. When you are flying you can listen to your favourite music, watch TV series or a movie."
+      },
+      "First": {
+        "Seat": "Ultimate comfort and functionality on the new First Class seats.Each seat features its own door and provides passengers with the privacy they need to enjoy their personal space.",
+        "Meal1": "Diabetic Meal(DBML) / Low Fat Meal(LFML) / Low Calorie Meal(LCML)",
+        "Meal2": "Cuttlefish & White Konjacw/Lemongrass flavored Cauliflower Purée",
+        "Meal3": "Steamed Chicken & Mushroom Puréew/Vegetable & Quinoa Salad Style",
+        "Meal4": "Dessert - Tea Jelly",
+        "WiFi": "Free - unlimited",
+        "SPA-Relaxation Zone": " The spa centers at business class lounges are designed in such a way to offer maximum privacy and quiet environment so that you can unwind in a quality way",
+        "Entertainment": "First class lounges offer their guests a variety of entertainment options. One of them are provided by the TV monitors of the airplane seats of business class. When you are flying you can listen to your favourite music, watch TV series or a movie.",
+        "Other": "Softness, lightness, insulation, and breathability are the deciding factors for a comfortable sleep. Our new comforter is made using Nishikawa proprietary techniques to improve insulation, and features feather down. Furthermore, the new pillow is airy and fluffy, and boasts high-quality Hungarian white duck down for a pleasant rest. The bedding set comes complete with a soft TENERITA blanket and 100% pure organic cotton lounge wear."
+      },
+      "Premium Economy": {
+        "Seat": "Our seats maximize seat pitch and legroom, providing even more space and comfort. Experience even greater enjoyment and comfort during your flight.",
+        "Meal1": "7 Allergen Free Meal, 28 Allergen Free Meal,Baby Meal (BBML),Child Meal (CHML)",
+        "Ammenities": "A range of amenities is available for Premium Economy passengers to make their on-board experience a more comfortable one. Feel free to request them from one of our cabin attendants.",
+        "WiFi": "Free 500 MB"
+      },
+      "Economy": {
+        "Seat": "Paid",
+        "Meal1": "Paid",
+        "Ammenities": "A range of amenities is available for Economy passengers to make their on-board experience a more comfortable one. Feel free to request them from one of our cabin attendants.",
+        "WiFi": "Paid"
+      }
+    }
+  ]
+}
