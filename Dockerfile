@@ -1,4 +1,4 @@
-FROM openjdk:8-jdk-alpine
+FROM openjdk:11
 MAINTAINER airRetailer
-COPY flight_amenity_web/target/flight_amenity_web-1.0-SNAPSHOT-jar-with-dependencies.jar flight-amenity-1.0.jar
-ENTRYPOINT ["java","-jar","/flight-amenity-1.0.jar"]
+COPY flight_amenity_web/target/ar_flight-amenity.jar ar_flight-amenity.jar
+ENTRYPOINT ["java","-jar","/ar_flight-amenity.jar"]

@@ -6,6 +6,7 @@
  */
 package org.airretailer.service.impl;
 
+import lombok.extern.slf4j.Slf4j;
 import org.airretailer.constant.CommonMessage;
 import org.airretailer.constant.enums.CabinType;
 import org.airretailer.constant.enums.CommonStatus;
@@ -31,11 +32,10 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
+@Slf4j
 public class FlightServiceImpl implements FlightService {
 
     private final FlightRepository flightRepository;
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(FlightServiceImpl.class);
 
     public FlightServiceImpl(FlightRepository flightRepository) {
         this.flightRepository = flightRepository;
@@ -48,7 +48,7 @@ public class FlightServiceImpl implements FlightService {
      */
     @Override
     public CommonResponse createFlight(FlightDto flightDto)  {
-        LOGGER.info(" Start calling method -> createFlight ");
+        log.info(" Start calling method -> createFlight ");
         String message = FlightUtil.validateFlightDto(flightDto);
         if(!ObjectUtils.isNotEmpty(message)){
             if (!flightRepository.existsByFlightNumber(flightDto.getFlightNumber())){
@@ -72,7 +72,7 @@ public class FlightServiceImpl implements FlightService {
      */
     @Override
     public CommonResponse updateFlight(FlightDto flightDto) {
-        LOGGER.info(" Start calling method -> updateFlight ");
+        log.info(" Start calling method -> updateFlight ");
         String message = FlightUtil.validateFlightDto(flightDto);
         if(!ObjectUtils.isNotEmpty(message)){
             Flight newFlightDetails = FlightUtil.getFlightEntity(flightDto);
@@ -100,7 +100,7 @@ public class FlightServiceImpl implements FlightService {
      */
     @Override
     public CommonResponse deleteFlight(String flightId) {
-        LOGGER.info(" Start calling method -> deleteFlight ");
+        log.info(" Start calling method -> deleteFlight ");
         if (StringUtils.isNotBlank(flightId)){
             Optional<Flight> retrievedFlight = flightRepository.findFlightByCommonStatusNotAndId
                     (CommonStatus.DELETE,flightId);
@@ -125,7 +125,7 @@ public class FlightServiceImpl implements FlightService {
      */
     @Override
     public CommonResponse getFlightById(String flightId) {
-        LOGGER.info(" Start calling method -> getFlightById ");
+        log.info(" Start calling method -> getFlightById ");
         if (StringUtils.isNotBlank(flightId)){
             Optional<Flight> retrievedFlight = flightRepository.findFlightByCommonStatusNotAndId
                     (CommonStatus.DELETE,flightId);
@@ -148,11 +148,12 @@ public class FlightServiceImpl implements FlightService {
      */
     @Override
     public CommonResponse getFlightByNumber(String flightNumber) {
-        LOGGER.info(" Start calling method -> getFlightByName ");
+        log.info(" Start calling method -> getFlightByName ");
         if (StringUtils.isNotBlank(flightNumber)){
             Flight retrievedFlight = flightRepository.findFlightByFlightNumber(flightNumber);
             if (ObjectUtils.isNotEmpty(retrievedFlight)){
                 Map<String,Object> request = Map.of("Flight Number",flightNumber);
+                log.info(" End calling method -> getFlightByName "+ request +" "+retrievedFlight.toString());
                 return ResponseUtil.mapSuccessCommonResponse(CommonMessage.RETRIEVE_SUCCESS,
                         FlightUtil.getFlightDTO(retrievedFlight),request);
             }else {
@@ -171,10 +172,11 @@ public class FlightServiceImpl implements FlightService {
      */
     @Override
     public CommonResponse getAllFlight(int page, int size) {
-        LOGGER.info(" Start calling method -> getAllFlight ");
+        log.info(" Start calling method -> getAllFlight ");
         Pageable paging = PageRequest.of(page, size);
         Page<Flight> pagedFlights = flightRepository.findFlightByCommonStatusNot(CommonStatus.DELETE ,paging);
         Map<String,Object> request = Map.of("Page Number",page,"Page Size",size);
+        log.info(" End calling method -> getAllFlight "+ request +" "+pagedFlights.toString());
         return ResponseUtil.mapSuccessCommonResponse(CommonMessage.RETRIEVE_SUCCESS,pagedFlights,request);
     }
 
@@ -187,7 +189,7 @@ public class FlightServiceImpl implements FlightService {
      */
     @Override
     public FlightDto getFlightByFlightAndCabinType(String flightNumber, CabinType cabinType) {
-        LOGGER.info(" Start calling method -> getFlightByFlightAndCabinType ");
+        log.info(" Start calling method -> getFlightByFlightAndCabinType ");
         Flight flight = flightRepository.findOneByFlightNumberAndCabinType(flightNumber,cabinType);
         if (ObjectUtils.isNotEmpty(flight)){
             return FlightUtil.getFlightDTO(flight);

@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:3308/flight_amenity
+    url: jdbc:postgresql://127.0.0.1:3308/flight_amenity
     username: postgres
     password: 1234
 
@@ -15,9 +15,15 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
-flight-amenity:
-  amenity-url: http://localhost:3000/amenities
 
+flight-amenity:
+  amenity-url: http://127.0.0.1:3000/amenities
+
+
+logstash:
+  appender: LOGSTASH
+  host: 127.0.0.1
+  port: 3310
 
 
 

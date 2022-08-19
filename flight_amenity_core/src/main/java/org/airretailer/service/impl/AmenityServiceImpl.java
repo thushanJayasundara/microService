@@ -6,6 +6,7 @@
  */
 package org.airretailer.service.impl;
 
+import lombok.extern.slf4j.Slf4j;
 import org.airretailer.constant.CommonMessage;
 import org.airretailer.constant.enums.CabinType;
 import org.airretailer.dto.FlightDto;
@@ -30,11 +31,12 @@ import org.springframework.web.client.RestTemplate;
 import java.util.*;
 
 @Service
+@Slf4j
 public class AmenityServiceImpl implements AmenityService {
 
     private final FlightService flightService;
     private final RestTemplate restTemplate;
-    private static final Logger LOGGER  = LoggerFactory.getLogger(AmenityServiceImpl.class);
+
 
     @Value("${flight-amenity.amenity-url}")
     private String url;
@@ -52,7 +54,7 @@ public class AmenityServiceImpl implements AmenityService {
      */
     @Override
     public CommonResponse getAmenityByFlightNumberAndCabinType(String flightNumber, CabinType cabinType) {
-        LOGGER.info(" Start calling method -> getAmenityByFlightNumberAndCabinType ");
+        log.info(" Start calling method -> getAmenityByFlightNumberAndCabinType ");
         FlightDto flightDto =
                 flightService.getFlightByFlightAndCabinType(flightNumber, cabinType);
 
@@ -72,14 +74,14 @@ public class AmenityServiceImpl implements AmenityService {
      * @return Map<String, String>
      */
     private Map<String, String> getAmenityByCabinType(CabinType cabinType) {
-        LOGGER.info(" Start calling method -> getAmenityByCabinType | Rest call available here ");
+        log.info(" Start calling method -> getAmenityByCabinType | Rest call available here ");
         ArrayList<LinkedHashMap<String, LinkedHashMap<String, String>>> result =new ArrayList<>();
         if (ObjectUtils.isNotEmpty(url) && ObjectUtils.isNotEmpty(restTemplate)) {
-            result = restTemplate.getForObject(url, ArrayList.class);
+                result = restTemplate.getForObject(url, ArrayList.class);
         }
 
         if (ObjectUtils.isNotEmpty(result) && result.isEmpty()) {
-            LOGGER.info(" End calling method -> getAmenityByCabinType | Rest call end  ");
+            log.info(" End calling method -> getAmenityByCabinType | Rest call end  ");
             return result.get(0).get(cabinType.label);
         }
          throw new DataNotFoundException(CommonMessage.DATA_NOT_FOUND);

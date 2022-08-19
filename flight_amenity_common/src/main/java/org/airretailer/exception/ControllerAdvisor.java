@@ -6,6 +6,7 @@
  */
 package org.airretailer.exception;
 
+import java.util.stream.Collectors;
 import org.airretailer.constant.CommonMessage;
 import org.airretailer.util.CommonResponse;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
@@ -68,7 +69,7 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler {
                 .getFieldErrors()
                 .stream()
                 .map(DefaultMessageSourceResolvable::getDefaultMessage)
-                .toList();
+                .collect(Collectors.toList());
         return new ResponseEntity<>(mapToErrorCommonResponse(response), HttpStatus.BAD_REQUEST);
     }
 
